@@ -1,0 +1,17 @@
+identity:
+  LinuxPrep:
+    domain: <%= @host.domain%>
+    hostName: <%= @host.shortname%>
+
+globalIPSettings:
+  dnsServerList: [ <%= @host.primary_interface.subnet.dns_primary %>, <%= @host.primary_interface.subnet.dns_secondary %> ]
+  dnsSuffixList: [<%= @host.domain %>]
+
+nicSettingMap:
+<% @host.interfaces.each do |interface| %>
+  - adapter:
+      ip: <%= interface.ip %>
+      subnetMask: <%= interface.subnet.mask %>
+      <% if interface.primary -%>gateway: [<%= interface.subnet.gateway %>]<% end %>
+<% end %>
+

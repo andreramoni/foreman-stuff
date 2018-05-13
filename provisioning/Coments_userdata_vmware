@@ -1,0 +1,66 @@
+# https://pubs.vmware.com/vsphere-55/index.jsp#com.vmware.wssdk.apiref.doc/vim.vm.customization.Specification.html
+# encryptionKey expects an array
+# globalIPSettings expects a hash, REQUIRED
+# identity expects an hash, REQUIRED
+# nicSettingMap expects an array
+# options expects an hash
+
+# * LinuxPrep: <~Hash> - Optional, contains machine-wide settings (note the uppercase P)
+# * domain: <~String> - REQUIRED, The fully qualified domain name.
+# * hostName: <~String> - REQUIRED, the network host name
+# * hwClockUTC: <~Boolean> - Optional, Specifies whether the hardware clock is in UTC or local time
+# * timeZone: <~String> - Optional, Case sensistive timezone, valid values can be found at https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/timezone.html
+
+identity:
+LinuxPrep:
+domain: <%= @host.domain %>
+hostName: <%= @host.shortname %>
+hwClockUTC: true
+timeZone: <%= @host.params['time-zone'] || 'UTC' %>
+
+# * globalIPSettings <~Hash> - REQUIRED
+# * dnsServerList <~Array> - Optional, list of dns servers - Example: ["10.0.0.2", "10.0.0.3"]
+# * dnsSuffixList <~Array> - Optional, List of name resolution suffixes - Example: ["dev.example.com", "example.com"]
+globalIPSettings:
+dnsSuffixList: [<%= @host.domain %>]
+
+# * nicSettingMap: <~Array> - Optional, IP settings that are specific to a particular virtual network adapter
+# * Each item in array:
+# * adapter: <~Hash> - REQUIRED, IP settings for the associated virtual network adapter
+# * dnsDomain: <~String> - Optional, DNS domain suffix for adapter
+# * dnsServerList: <~Array> - Optional, list of dns server ip addresses - Example: ["10.0.0.2", "10.0.0.3"]
+# * gateway: <~Array> - Optional, list of gateways - Example: ["10.0.0.2", "10.0.0.3"]
+# * ip: <~String> - Optional, but required if static IP
+# * ipV6Spec: <~Hash> - Optional, IPv^ settings
+# * ipAddress: <~String> - Optional, but required if setting static IP
+# * gateway: <~Array> - Optional, list of ipv6 gateways
+# * netBIOS: <~String> - Optional, NetBIOS settings, if supplied must be one o
+# * disableNetBIOS','enableNetBIOS','enableNetBIOSViaDhcp'
+# * primaryWINS: <~String> - Optional, IP address of primary WINS server
+# * secondaryWINS: <~String> - Optional, IP address of secondary WINS server
+# * subnetMask: <~String> - Optional, subnet mask for adapter
+# * macAddress: <~String> - Optional, MAC address of adapter being customized. This cannot be set by the client
+
+NicSettingMap:
+#<% @host.interfaces.each do |interface| %>
+- adapter:
+#dnsDomain: <%= interface.domain %>
+#dnsServerList: [<%= @host.subnet.dns_primary %>, <%= @host.subnet.dns_secondary %>]
+#gateway: [<%= @host.subnet.gateway %>]
+#subnetMask: <%= @host.subnet.mask %>
+#ip: <%= interface.ip %>
+dnsDomain: srv.lab
+dnsServerList: [192.168.12.10, 1.1.1.1]
+gateway: 10.0.1.1
+subnetMask: 255.255.0.0
+ip: 10.0.1.2
+#<% end %>
+
+# * options: <~Hash> Optional operations, currently only win options have any value
+# * changeSID: <~Boolean> - REQUIRED, The customization process should modify the machine's security identifier
+# * deleteAccounts: <~Boolean> - REQUIRED, If deleteAccounts is true, then all user accounts are removed from the system
+# * reboot: <~String> - Optional, (defaults to reboot), Action to be taken after running sysprep, must be one of: 'noreboot', 'reboot', 'shutdown'
+options:
+ changeSID: true
+ deleteAccounts: false
+

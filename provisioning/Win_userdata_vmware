@@ -1,0 +1,44 @@
+<%-
+  powershell = '%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Unrestricted -NoLogo -NoProfile'
+-%>
+---
+identity:
+  Sysprep:
+    guiRunOnce:
+      commandList:
+        - '<%= powershell %> -Command "invoke-webrequest -Uri <%= foreman_url("built") %>"'
+        - '<%= powershell %> -Command "msiexec /qn /norestart /i C:\puppet-agent-x64-latest.msi PUPPET_MASTER_SERVER=foreman.ext.lab"'
+    guiUnattended:
+      autoLogon: true
+      autoLogonCount: 1
+      password:
+        plainText: true
+        value: 'adminadmin'
+      timeZone: 090
+    identification:
+      joinWorkgroup: 'WORKGROUP'
+    licenseFilePrintData:
+      autoMode: 'perSeat'
+    userData:
+      computerName: <%= @host.shortname %>
+      fullName: 'IT'
+      orgName: 'inovex GmbH'
+      productId: ''
+nicSettingMap:
+  - adapter:
+      dnsDomain: <%= @host.domain %>
+      dnsServerList:
+        - <%= @host.subnet.dns_primary %>
+      gateway:
+        - <%= @host.subnet.gateway %>
+      ip: <%= @host.ip %>
+      subnetMask: <%= @host.subnet.mask %>
+globalIPSettings:
+  dnsServerList:
+    - <%= @host.subnet.dns_primary %>
+  dnsSuffixList:
+    - <%= @host.domain %>
+options:
+  changeSID: true
+  deleteAccounts: false
+
