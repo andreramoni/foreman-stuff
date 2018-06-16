@@ -7,7 +7,7 @@ identity:
     guiRunOnce:
       commandList:
         - '<%= powershell %> -Command "invoke-webrequest -Uri <%= foreman_url("built") %>"'
-        - '<%= powershell %> -Command "msiexec /qn /norestart /i C:\puppet-agent-x64-latest.msi PUPPET_MASTER_SERVER=foreman.ext.lab"'
+        - '<%= powershell %> -Command "msiexec /qn /norestart /i C:\puppet-agent-x64-latest.msi PUPPET_MASTER_SERVER=<%= @host.puppetmaster %>"'
     guiUnattended:
       autoLogon: true
       autoLogonCount: 1
@@ -23,7 +23,7 @@ identity:
       computerName: <%= @host.shortname %>
       fullName: 'IT'
       orgName: 'inovex GmbH'
-      productId: ''
+      productId: <%= host_param('windows_serial') %>
 nicSettingMap:
   - adapter:
       dnsDomain: <%= @host.domain %>
@@ -41,4 +41,3 @@ globalIPSettings:
 options:
   changeSID: true
   deleteAccounts: false
-
