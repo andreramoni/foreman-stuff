@@ -14,7 +14,6 @@ part /boot --fstype xfs --size=1024 --asprimary --ondisk=sda
 part pv.01 --size 1 --grow --ondisk=sda
 volgroup vg01 pv.01
 logvol swap --name=swap --fstype=swap --vgname=vg01 --size=1024
-logvol /    --name=root --fstype=xfs --vgname=vg01 --grow --size=4096 --maxsize=10240  
+logvol /    --name=root --fstype=xfs --vgname=vg01 --grow --size=4096 --maxsize=14336 
 logvol /var --name=var  --fstype=xfs --vgname=vg01 --grow --size=1024
-
 
