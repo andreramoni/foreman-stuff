@@ -1,0 +1,24 @@
+<%#
+kind: ptable
+name: Kickstart default Ramoni
+model: Ptable
+oses:
+- CentOS
+- Fedora
+- RedHat
+%>
+zerombr
+clearpart --all --initlabel
+
+part /boot --fstype xfs --size=1024 --asprimary --ondisk=sda
+part pv.01 --size 1 --grow --ondisk=sda
+volgroup vg01 pv.01
+logvol swap --name=swap --fstype=swap --vgname=vg01 --size=1024
+logvol /    --name=root --fstype=xfs --vgname=vg01 --grow --size=4096 --maxsize=14336 
+logvol /var --name=var  --fstype=xfs --vgname=vg01 --grow --size=1024
+
+part pv.02 --size 1 --grow --ondisk=sdb
+volgroup vg02 pv.02
+logvol /data --name=data  --fstype=xfs --vgname=vg02 --grow --size=1024
+
+
