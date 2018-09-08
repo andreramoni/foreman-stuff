@@ -61,4 +61,3 @@ DEFROUTE=<%= primary %>
 <%- elsif @subnet6 -%>
 <%=   "MTU=#{@subnet6.mtu}" %>
 <%- end -%>
-
