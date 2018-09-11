@@ -1,0 +1,6 @@
+:column_view:
+  :ipaddress:
+    :title: IP_Address
+    :after: last_report
+    :content: facts_hash['ipaddress']
+
