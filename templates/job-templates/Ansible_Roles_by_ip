@@ -1,5 +1,7 @@
 ---
-- hosts: <%= @host.ip %>
+- hosts: <%= @host %>
+  vars:
+    ansible_host: <%= @host %>
   tasks:
     - name: Display all parameters known for the Foreman host
       debug:
