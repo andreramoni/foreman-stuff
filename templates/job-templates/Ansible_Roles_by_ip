@@ -1,5 +1,6 @@
 ---
 - hosts: <%= @host %>
+  gather_facts: no
   vars:
     ansible_host: <%= @host.ip %>
     foreman_server: <%= @host.puppetmaster %>
@@ -10,4 +11,3 @@
 <%- if @host.all_ansible_roles.present? -%>
 <%= @host.all_ansible_roles.map { |role| "    - #{role.name.strip}" }.join("\n") %>
 <%- end -%>
-
