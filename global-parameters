@@ -1,5 +1,7 @@
 disable-firewall	true	
-enable-puppetlabs-puppet5-repo	true	
-http-proxy	proxy.ext.lab	
-http-proxy-port	3128	
+enable-puppetlabs-pc1-repo	true	
+kt_activation_keys	CentOS7	
+puppet_runinterval	120	
 selinux-mode	disabled
+http-proxy      proxy.ext.lab
+http-proxy-port 3128
