@@ -3,7 +3,8 @@
   gather_facts: no
   vars:
     ansible_host: <%= @host.ip %>
-    foreman_server: <%= @host.puppetmaster %>
+    katello_server: <%= @host.puppetmaster %>
+    puppet_server: <%= @host.puppetmaster %>
     org: <%= @host.organization %>
     location: <%= @host.location %>
     activation_key: <%= host_param('kt_activation_keys') %>
