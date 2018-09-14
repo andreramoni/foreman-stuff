@@ -1,13 +1,13 @@
 ---
 - hosts: <%= @host %>
   vars:
-    ansible_host: <%= @host %>
-  tasks:
-    - name: Display all parameters known for the Foreman host
-      debug:
-        var: foreman_params
+    ansible_host: <%= @host.ip %>
+    foreman_server: <%= @host.puppetmaster %>
+    org: <%= @host.organization %>
+    location: <%= @host.location %>
+    activation_key: <%= host_param('kt_activation_keys') %>
   roles:
 <%- if @host.all_ansible_roles.present? -%>
-<%=   @host.all_ansible_roles.map { |role| "    - #{role.name.strip}" }.join("\n") %>
+<%= @host.all_ansible_roles.map { |role| "    - #{role.name.strip}" }.join("\n") %>
 <%- end -%>
 
