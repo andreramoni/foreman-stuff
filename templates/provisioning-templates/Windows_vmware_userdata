@@ -7,6 +7,7 @@ identity:
     guiRunOnce:
       commandList:
         - '<%= powershell %> -Command "invoke-webrequest -Uri <%= foreman_url("built") %>"'
+        - '<%= powershell %> -Command "invoke-webrequest -Uri http://downloads.puppet.com/windows/puppet5/puppet-agent-x64-latest.msi"'
         - '<%= powershell %> -Command "msiexec /qn /norestart /i C:\puppet-agent-x64-latest.msi PUPPET_MASTER_SERVER=<%= @host.puppetmaster %>"'
     guiUnattended:
       autoLogon: true
