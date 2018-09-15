@@ -1,7 +1,7 @@
 identity:
   LinuxPrep:
-    domain: <%= @host.domain%>
-    hostName: <%= @host.shortname%>
+    domain: <%= @host.domain %>
+    hostName: <%= @host.shortname %>
 
 globalIPSettings:
   dnsServerList: [ <%= @host.primary_interface.subnet.dns_primary %>, <%= @host.primary_interface.subnet.dns_secondary %> ]
