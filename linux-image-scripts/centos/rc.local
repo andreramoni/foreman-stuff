@@ -1,4 +1,0 @@
-if [ -x '/root/foreman_finish_deploy.sh' ]; then
-  /root/foreman_finish_deploy.sh &
-fi
-
