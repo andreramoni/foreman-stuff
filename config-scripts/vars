@@ -41,13 +41,13 @@ export GPAR_ACTIVATION_KEYS="CentOS7"
 export GPAR_SELINUX_MODE="disabled"
 export GPAR_PUPPET_RUNINTERVAL="120"
 
-# Compute resource:
-export COMPUTE_RESOURCE_NAME="${LOCATION}"
-export COMPUTE_RESOURCE_PROVIDER="Vmware"
-export COMPUTE_RESOURCE_SERVER="vcenter.ext.dc1.lab"
-export COMPUTE_RESOURCE_USER="administrator"
-export COMPUTE_RESOURCE_PASSWORD="#RLabs123"
-export COMPUTE_RESOURCE_DATACENTER="DC1"
+# Compute resource DC1:
+export COMPUTE_RESOURCE_DC1_PROVIDER="VMware"
+export COMPUTE_RESOURCE_DC1_NAME="DC1_VMware"
+export COMPUTE_RESOURCE_DC1_SERVER="vcenter.ext.dc1.lab"
+export COMPUTE_RESOURCE_DC1_USER="administrator"
+export COMPUTE_RESOURCE_DC1_PASSWORD="#RLabs123"
+export COMPUTE_RESOURCE_DC1_DATACENTER="DC1"
 
 # IF you have a proxy:
 export PROXY="proxy.${EXT_DOMAIN}"
