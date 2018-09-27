@@ -51,22 +51,22 @@ hammer repository create --product="CentOS7" \
 
 #############################
 echo -n "* [repository synchronize: CentOS7 base] "
-hammer repository synchronize --name "CentOS7 base" --product "CentOS7" --organization "${ORGANIZATION}" --async
+hammer repository synchronize --name "CentOS7 base" --product "CentOS7" --organization "${ORGANIZATION}" 
 
 echo -n "* [repository synchronize: CentOS7 extras] "
-hammer repository synchronize --name "CentOS7 extras" --product "CentOS7" --organization "${ORGANIZATION}" --async
+hammer repository synchronize --name "CentOS7 extras" --product "CentOS7" --organization "${ORGANIZATION}" 
 
 echo -n "* [repository synchronize: CentOS7 updates] "
-hammer repository synchronize --name "CentOS7 updates" --product "CentOS7" --organization "${ORGANIZATION}" --async
+hammer repository synchronize --name "CentOS7 updates" --product "CentOS7" --organization "${ORGANIZATION}" 
 
 echo -n "* [repository synchronize: Katello Client ${KATELLO_VERSION}] "
-hammer repository synchronize --name "Katello Client ${KATELLO_VERSION}" --product "CentOS7" --organization "${ORGANIZATION}" --async
+hammer repository synchronize --name "Katello Client ${KATELLO_VERSION}" --product "CentOS7" --organization "${ORGANIZATION}" 
 
 echo -n "* [repository synchronize: Epel 7] "
-hammer repository synchronize --name "Epel 7" --product "CentOS7" --organization "${ORGANIZATION}" --async
+hammer repository synchronize --name "Epel 7" --product "CentOS7" --organization "${ORGANIZATION}" 
 
 echo -n "* [repository synchronize: Puppet 4 PC1] "
-hammer repository synchronize --name "Puppet 4 PC1" --product "CentOS7" --organization "${ORGANIZATION}" --async
+hammer repository synchronize --name "Puppet 4 PC1" --product "CentOS7" --organization "${ORGANIZATION}" 
 
 #############################
 echo -n "* [content-view create: CentOS7] "
