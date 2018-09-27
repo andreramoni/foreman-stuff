@@ -3,4 +3,8 @@
     :title: IP_Address
     :after: last_report
     :content: facts_hash['ipaddress']
+  :uptime:
+    :title: Uptime
+    :after: ipaddress
+    :content: facts_hash['uptime']
 
