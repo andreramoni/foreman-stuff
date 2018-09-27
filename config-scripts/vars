@@ -27,6 +27,9 @@ export PROV_NETWORK_RANGE_FROM="10.255.10.1"
 export PROV_NETWORK_RANGE_TO="10.255.255.254"
 export PROV_NETWORK_DNS1="${EXT_NETWORK_DNS1}"
 
+# Misc
+export FOREMAN_HOSTNAME="foreman.${EXT_DOMAIN}"
+
 # Settings:
 export SET_ENTRIES_PER_PAGE="1000"
 export SET_REMOTE_EXECUTION_BY_IP="true"
@@ -46,7 +49,6 @@ export COMPUTE_RESOURCE_USER="administrator"
 export COMPUTE_RESOURCE_PASSWORD="#RLabs123"
 export COMPUTE_RESOURCE_DATACENTER="DC1"
 
-# General
-export FOREMAN_HOSTNAME="foreman.${EXT_DOMAIN}"
+# IF you have a proxy:
 export PROXY="proxy.${EXT_DOMAIN}"
 export PROXY_PORT="3128"
