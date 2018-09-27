@@ -78,5 +78,6 @@ hammer content-view publish --name "CentOS7" --organization "${ORGANIZATION}"
 #############################
 echo -n "* [activation-key create: CentOS7] "
 hammer activation-key create --content-view "CentOS7" --name "CentOS7" --lifecycle-environment "Library" --organization "${ORGANIZATION}"
+hammer activation-key add-subscription --name "CentOS7" --subscription-id 1 --organization "${ORGANIZATION}"
 
 
