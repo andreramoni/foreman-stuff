@@ -34,7 +34,7 @@ hammer repository create --product="CentOS7" \
 echo -n "* [repository create: CentOS7|Epel 7] "
 hammer repository create --product="CentOS7" \
   --content-type="yum" --name "Epel 7" \
-  --url "http://download.fedoraproject.org/pub/epel/7/x86_64" \
+  --url "https://dl.fedoraproject.org/pub/epel/7/x86_64/" \
   --download-policy "on_demand" --organization "${ORGANIZATION}"
 
 echo -n "* [repository create: CentOS7|Katello Client ${KATELLO_VERSION}] "
