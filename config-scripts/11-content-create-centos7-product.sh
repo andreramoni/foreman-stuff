@@ -8,7 +8,6 @@
 echo -n "* [sync-plan create: Daily] "
 hammer sync-plan create --interval 'daily' --name 'Daily' --enabled 'yes'  --organization "${ORGANIZATION}" --sync-date "`date -I`" 
 
-
 #############################
 echo -n "* [product create: CentOS7] "
 hammer product create --name "CentOS7" --organization "${ORGANIZATION}" --sync-plan 'Daily'
@@ -51,7 +50,7 @@ hammer repository create --product="CentOS7" \
 
 #############################
 echo -n "* [repository synchronize: CentOS7 base] "
-hammer repository synchronize --name "CentOS7 base" --product "CentOS7" --organization "${ORGANIZATION}" --async
+hammer repository synchronize --name "CentOS7 base" --product "CentOS7" --organization "${ORGANIZATION}" 
 
 echo -n "* [repository synchronize: CentOS7 extras] "
 hammer repository synchronize --name "CentOS7 extras" --product "CentOS7" --organization "${ORGANIZATION}"  --async
