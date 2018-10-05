@@ -1,5 +1,5 @@
 ---
-- hosts: <%= @host %>
+- hosts: <%= @host.ip %>
   gather_facts: no
   vars:
     ansible_host: <%= @host.ip %>
